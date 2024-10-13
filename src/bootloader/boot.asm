@@ -45,7 +45,31 @@ main:
     MOV si, os_boot_msg
     CALL print
 
-    HLT ; halt the CPU
+    MOV ax, [bdb_sectors_per_fat]
+    MOV bl, [bdb_fat_count]
+    XOR bh, bh
+    MUL bx
+    ADD ax, [bdb_reserved_sectors] ; LBA of the root directory
+    PUSH ax
+
+    MOV ax, [bdb_dir_entries_count]
+    SHL ax, 5 ; ax *= 32
+    XOR dx, dx
+    DIV word [bdb_bytes_per_sector] ; (32 * num of entries) / bytes per sector
+    
+    TEST dx,dx
+    JZ rootDirAfter
+    INC ax
+
+rootDirAfter:
+    MOV cl, al
+    POP ax
+    MOV dl. [ebr_drive_number]
+    MOV bx, buffer
+    CALL disk_read
+
+    XOR bx, bx
+    MOV di, buffer
 
 halt:
     JMP halt ; infinite loop
@@ -149,9 +173,17 @@ done_print:
 
 os_boot_msg: DB 'OS has booted successfully!', 0x0D, 0x0A, 0
 read_failure: DB 'Failed to read disk!', 0x0D, 0x0A, 0
+file_kernel_bin DB 'KERNEL  BIN'
+msg_kernel_not_found DB 'KERNEL.BIN not found!'
+kernel_cluster DW 0
+
+kernel_load_segment EQU 0x2000
+kernel_load_offset EQU 0
 
 ; fill the rest of the sector with zeros
 TIMES 510-($-$$) DB 0
 
 ; boot signature (must be 0xAA55 at the end of first 512 bytes)
 DW 0xAA55
+
+buffer:
