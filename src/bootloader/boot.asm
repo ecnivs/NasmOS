@@ -23,8 +23,8 @@ ebr_drive_number: DB 0
                   DB 0
 ebr_signature: DB 29h
 ebr_volume_id: DB 12h,34h,56h,78h
-ebr_volume_label: DB 'NASM OS    '
-ebr_system_id: DB 'FAT12   '
+ebr_volume_label: DB 'NASM OS    ' ; 11 bytes
+ebr_system_id: DB 'FAT12   ' ; 8 bytes
 
 main:
     ; set segments to 0
