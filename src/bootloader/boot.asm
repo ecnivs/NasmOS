@@ -71,6 +71,89 @@ rootDirAfter:
     XOR bx, bx
     MOV di, buffer
 
+searchKernel:
+    MOV si, file_kernel_bin
+    MOV cx, 11
+    PUSH di
+    REPE CMPSB
+    POP di
+    JE foundKernel
+
+    ADD di, 32
+    INC bx
+    CMP bx, [bdb_dir_entries_count]
+    JL searchKernel
+
+    JMP kernelNotFound
+
+kernelNotFound:
+    MOV si, msg_kernel_not_found
+    CALL print
+
+    HLT
+    JMP halt
+
+foundKernel:
+    MOV ax, [di+26]
+    MOV [kernel_cluster], ax
+
+    MOV ax, [bdb_reserved_sectors]
+    MOV bx, buffer
+    MOV cl, [bdb_sectors_per_fat]
+    MOV dl, [ebr_drive_number]
+
+    call disk_read
+
+    MOV bx, kernel_load_segment
+    MOV es, bx
+    MOV bx, kernel_load_offset
+
+loadKernelLoop:
+    MOV ax, [kernel_cluster]
+    ADD ax, 31
+    MOV cl, 1
+    MOV dl, [ebr_drive_number]
+
+    CALL disk_read
+
+    ADD bx, [bdb_bytes_per_sector]
+
+    MOV ax, [kernel_cluster] ; (kernel_cluster * 3) / 2
+    MOV cx, 3
+    MUL cx
+    MOV cx, 2
+    DIV cx
+
+    MOV si, buffer
+    ADD si, ax
+    MOV ax, [ds:si]
+
+    OR dx, dx
+    JZ even
+
+odd:
+    SHR ax, 4
+    JMP nextClusterAfter
+even:
+    AND ax, 0x0FFF
+
+nextClusterAfter:
+    CMP ax, 0x0FF8
+    JAE readFinish
+
+    MOV [kernel_cluster], ax
+    JMP loadKernelLoop
+
+readFinish:
+    MOV dl, [ebr_drive_number]
+    MOV ax, kernel_load_segment
+    MOV ds, ax
+    MOV es, ax
+
+    JMP kernel_load_segment:kernel_load_offset
+
+    HLT
+
 halt:
     JMP halt ; infinite loop
 
