@@ -64,7 +64,7 @@ main:
 rootDirAfter:
     MOV cl, al
     POP ax
-    MOV dl. [ebr_drive_number]
+    MOV dl, [ebr_drive_number]
     MOV bx, buffer
     CALL disk_read
 
