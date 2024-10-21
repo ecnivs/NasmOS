@@ -56,7 +56,7 @@ main:
     SHL ax, 5 ; ax *= 32
     XOR dx, dx
     DIV word [bdb_bytes_per_sector] ; (32 * num of entries) / bytes per sector
-    
+
     TEST dx,dx
     JZ rootDirAfter
     INC ax
@@ -177,7 +177,7 @@ lba_to_chs:
     MOV ch, al
     SHL ah, 6
     OR CL, AH ; cylinder
-    
+
     POP ax
     MOV dl, al
     pop ax
