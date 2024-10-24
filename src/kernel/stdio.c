@@ -177,4 +177,5 @@ int * printf_number(int* argp, int length, bool sign, int radix){
     while (--pos >= 0){
         putc(buffer[pos]);
     }
+    return argp;
 }
