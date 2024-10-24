@@ -39,7 +39,7 @@ _x86_Video_WriteCharTeletype:
 
     MOV ah, 0Eh
     MOV al, [bp+4]
-    MOV bh, [bp+6]
+    MOV bh, 0
 
     INT 10h
 
