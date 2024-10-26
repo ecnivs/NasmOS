@@ -1,7 +1,8 @@
 # NASM OS
 **NASM OS** is a simple of what a barebones operating system can be. It consists of a basic bootloader and a kernel that prints a message, showcasing the very first steps in OS development.
 
-![image](https://github.com/user-attachments/assets/4f7ec4f1-0f92-4f25-873e-fff7d5280c71)
+
+![swappy-20241026-143109](https://github.com/user-attachments/assets/5429ea05-1624-49b4-af41-a0d588c971ff)
 
 ## Prerequisites
 * `NASM`: For assembling the bootloader and kernel assembly code.
