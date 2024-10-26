@@ -7,6 +7,11 @@
 * `QEMU`: A virtual machine emulator that allows you to test your OS without needing real hardware.
 
 ## Installing Prerequisites
+* **Open Watcom**: Download [here](https://openwatcom.org/)
+```bash
+# On Arch Linux
+yay -S openwatcom
+```
 * **NASM**:
 ```bash
 # On Ubuntu
@@ -16,8 +21,7 @@ sudo apt install nasm
 # On Arch Linux
 sudo pacman -S nasm
 ```
-* **Open Watcom**: Visit [Open Watcom Official site](https://openwatcom.org/) for download and installation instructions.
-* QEMU:
+* **QEMU**:
 ```bash
 # On Ubuntu
 sudo apt install qemu
