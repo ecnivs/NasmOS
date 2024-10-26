@@ -1,6 +1,8 @@
 # NASM OS
 **NASM OS** is a simple of what a barebones operating system can be. It consists of a basic bootloader and a kernel that prints a message, showcasing the very first steps in OS development.
 
+![swappy-20241026-143109](https://github.com/user-attachments/assets/e4e1f735-c61d-4526-b277-51d14fdf25a9)
+
 ## Prerequisites
 * `NASM`: For assembling the bootloader and kernel assembly code.
 * `Open Watcom`: Used to compile the kernel's C code. Watcom allows for low-level C programming suitable for OS development, making it easier to work with hardware and memory directly.
