@@ -6,5 +6,5 @@ void _cdecl cstart_(){
     uint8_t error;
 
     x86_Disk_Reset(0, &error);
-    printf("Error %d\r\n", error);
+    //printf("Error %d\r\n", error);
 }
