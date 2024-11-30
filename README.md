@@ -1,4 +1,4 @@
-# NASM OS
+# Nasm OS
 ## Overview
 **NASM OS** is a simple demonstration of a barebones operating system. It consists of a minimal bootloader and a basic kernel that displays a message, showcasing the foundational steps in OS development.
 
