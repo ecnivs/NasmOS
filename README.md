@@ -1,8 +1,23 @@
-# NasmOS
-## Overview
-**NasmOS** is a simple demonstration of a barebones operating system. It consists of a minimal [bootloader](https://en.wikipedia.org/wiki/Bootloader) and a basic [kernel](https://en.wikipedia.org/wiki/Kernel_(operating_system)) that displays a message, showcasing the foundational steps in OS development.
+<h1 align="center">NasmOS</h1>
+<p align="center"><em>Barebones x86 Operating System</em></p>
 
 ![swappy-20241026-143109](https://github.com/user-attachments/assets/5429ea05-1624-49b4-af41-a0d588c971ff)
+  
+<p align="center">
+  <a href="https://github.com/ecnivs/nasmos/stargazers">
+    <img src="https://img.shields.io/github/stars/ecnivs/nasmos?style=flat-square">
+  </a>
+  <a href="https://github.com/ecnivs/nasmos/issues">
+    <img src="https://img.shields.io/github/issues/ecnivs/nasmos?style=flat-square">
+  </a>
+  <a href="https://github.com/ecnivs/nasmos/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/ecnivs/nasmos?style=flat-square">
+  </a>
+  <img src="https://img.shields.io/github/languages/top/ecnivs/nasmos?style=flat-square">
+</p>
+
+## Overview
+**NasmOS** is a simple demonstration of a barebones x86 operating system. It consists of a minimal [bootloader](https://en.wikipedia.org/wiki/Bootloader) and a basic [kernel](https://en.wikipedia.org/wiki/Kernel_(operating_system)) that displays a message, showcasing the foundational steps in OS development.
 
 ## Prerequisites
 * `NASM`: For assembling the bootloader and kernel assembly code.
@@ -34,4 +49,4 @@ sudo apt install qemu
 sudo pacman -S qemu
 ```
 
-### I'd appreciate any feedback or code reviews you might have!
+### *Thank you for checking out this project!*
